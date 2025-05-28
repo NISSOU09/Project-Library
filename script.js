@@ -52,6 +52,18 @@ function displayBooks() {
         removeBtn.addEventListener("click", removeBook);
         actionsData.appendChild(removeBtn);
         row.appendChild(actionsData);
+
+        const changeStat = document.createElement("td");
+        const changeStatusBtn = document.createElement("button");
+        changeStatusBtn.textContent = "read";
+        changeStatusBtn.classList.add("change-status-btn");
+        changeStatusBtn.dataset.index = i;
+        changeStatusBtn.addEventListener("click", () => {
+            myLibrary[i].status = !myLibrary[i].status;
+            displayBooks();
+        });
+        changeStat.appendChild(changeStatusBtn);
+        row.appendChild(changeStat);
         
         tableBody.appendChild(row);
     }
